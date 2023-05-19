@@ -12,7 +12,7 @@ public class menus : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("LVL1");
     }
 
 }   
