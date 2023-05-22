@@ -12,6 +12,8 @@ public class TutorialManager : MonoBehaviour
     private bool bedTaskCompleted = false;
     private bool cabinetTaskCompleted = false;
     private bool lightswitchTaskCompleted = false;
+    private bool isLightSwitchEnabled = false;
+    private bool isPowerCubeInteractable = false;
     private bool isSprinting = false;
     private bool wKeyPressed = false;
     private bool aKeyPressed = false;
@@ -43,6 +45,7 @@ public class TutorialManager : MonoBehaviour
         aKeyText.color = defaultKeyColor;
         sKeyText.color = defaultKeyColor;
         dKeyText.color = defaultKeyColor;
+        DisableLightSwitch();
     }
     private void Update()
     {
@@ -126,11 +129,12 @@ public class TutorialManager : MonoBehaviour
         else if (!cabinetTaskCompleted && ScoreManager.instance.currentCoins > 0 )
         {
             cabinetTaskCompleted = true;
+            EnableLightSwitch();
             DisplayMessage("Find a way to Power the Door to Open it");
         }
-        else if (!lightswitchTaskCompleted && powercube.isPoweredOn && Input.GetKeyDown(KeyCode.E) && Vector3.Distance(powerCube.transform.position, lightswitch.transform.position) < 2f)
+        else if (!lightswitchTaskCompleted && isLightSwitchEnabled  && isPowerCubeInteractable && Input.GetKeyDown(KeyCode.E) && Vector3.Distance(powerCube.transform.position, lightswitch.transform.position) < 2f)
         {
-            cabinetTaskCompleted = true;
+            lightswitchTaskCompleted = true;
             DisplayMessage("Exit to complete the tutorial");
         }
     }
@@ -139,5 +143,20 @@ public class TutorialManager : MonoBehaviour
         tutorialText.text = message;
         float textLength = tutorialText.preferredWidth;
         blackImage.rectTransform.sizeDelta = new Vector2(textLength, blackImage.rectTransform.sizeDelta.y);
+    }
+
+    private void EnableLightSwitch()
+    {        
+        lightswitch.SetActive(true);
+        isLightSwitchEnabled = true;
+        isPowerCubeInteractable = true;
+
+    }
+    private void DisableLightSwitch()
+    {
+        lightswitch.SetActive(false);
+        isLightSwitchEnabled = false;
+        isPowerCubeInteractable = false;
+
     }
 }

@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     public GameObject pauseMenuUI;
     public AudioSource levelMusic;
+    [SerializeField] private float fullVolume;
+    [SerializeField] private float halfVolume;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,7 +28,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        levelMusic.volume = 1f;
+        levelMusic.volume = fullVolume;
     }
     void Pause()
     {
@@ -34,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
 
-        levelMusic.volume = 0.5f;
+        levelMusic.volume = halfVolume;
     }
     public void LoadMenu()
     {

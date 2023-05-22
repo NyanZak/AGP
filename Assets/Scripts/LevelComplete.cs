@@ -20,7 +20,7 @@ public class LevelComplete : MonoBehaviour
             isComplete = true;
             Time.timeScale = 0f;
             levelCompleteUI.SetActive(true);
-            levelMusic.volume = 0.5f;
+            levelMusic.Stop();
             levelCompletedMusic.Play();
         }
     }
@@ -57,6 +57,7 @@ public class LevelComplete : MonoBehaviour
     }
     public void RetryLevel()
     {
+        isComplete = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
     }

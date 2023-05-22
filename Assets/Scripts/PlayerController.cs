@@ -22,10 +22,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        visorAnimator = transform.Find("VisorPivot").GetComponent<Animator>(); 
+        //visorAnimator = transform.Find("VisorPivot").GetComponent<Animator>(); 
 
-        walkingVisorAudioSource = transform.Find("WalkingAudioSource").GetComponent<AudioSource>(); 
-        runningVisorAudioSource = transform.Find("RunningAudioSource").GetComponent<AudioSource>(); 
+      //  walkingVisorAudioSource = transform.Find("WalkingAudioSource").GetComponent<AudioSource>(); 
+       // runningVisorAudioSource = transform.Find("RunningAudioSource").GetComponent<AudioSource>(); 
 
 
     }
